@@ -58,16 +58,19 @@ const categories = ["All", "Leadership", "Empathy", "Motivation", "Learning", "S
 
 
     const addToFavorites = (quoteId) => {
-      // console.log(`favourite quote heart here ${quoteId}`)
+      // console.log(`favorite quote heart here ${quoteId}`)
       const selectedQuote = quotes.find((quote) => quote.id === quoteId);
       // console.log(selectedQuote)
+      // ORIGINAL 
       const alreadyFavorite = favoriteQuotes.find((favorite) => favorite.id === selectedQuote.id)
+      // TEST 
+      // const alreadyFavorite = favoriteQuotes.find((favorite) => favorite.id === quotes.id)
       console.log(alreadyFavorite)
       if (alreadyFavorite) {
-        console.log("already in favourites!!")
+        console.log("already in favorites!!")
       } else if (favoriteQuotes.length < maxFavs) {
         setFavoriteQuotes([...favoriteQuotes, selectedQuote])
-        console.log("added to favourites")
+        console.log("added to favorites")
       } else {
         console.log("max number of quotes reached, please delete one to add another")
       }
@@ -82,7 +85,7 @@ const categories = ["All", "Leadership", "Empathy", "Motivation", "Learning", "S
       <main>
         <section className="favorite-quotes">
           <div className="wrapper quotes">
-            <h3>Top 3 Favourite Quotes</h3>
+            <h3>Top 3 Favorite Quotes</h3>
             {favoriteQuotes.length >= 1 && JSON.stringify(favoriteQuotes)}
           </div>
         </section>
@@ -91,6 +94,7 @@ const categories = ["All", "Leadership", "Empathy", "Motivation", "Learning", "S
         ) : ( 
         <Quotes 
         filteredQuotes={filteredQuotes} 
+        // addToFavorites={addToFavorites}  
         categories={categories} 
         category={category} 
         handleCategoryChange={handleCategoryChange}
