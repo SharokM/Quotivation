@@ -5,6 +5,7 @@ import Quotes from "./components/quotes/Quotes";
 import { Loader } from "react-feather";
 import "./App.css";
 import FavoriteQuotes from "./components/quotes/FavoriteQuotes";
+import Message from "./components/Message";
 // import { use } from "react";
 
 
@@ -13,8 +14,11 @@ const [quotes, setQuotes] = useState([]);
 const [loading, setLoading] = useState(false);
 const [category, setCategory] = useState("All");
 const [favoriteQuotes, setFavoriteQuotes] = useState([]);
-
+const [messageText, setMessageText] = useState("");
+const [showMessage, setShowMessage] = useState(false);
 const maxFavs = 3;
+
+
 
   // url to the quotes API
 const quotesUrl =
@@ -62,18 +66,19 @@ const categories = ["All", "Leadership", "Empathy", "Motivation", "Learning", "S
       // console.log(`favorite quote heart here ${quoteId}`)
       const selectedQuote = quotes.find((quote) => quote.id === quoteId);
       // console.log(selectedQuote)
-      // ORIGINAL 
       const alreadyFavorite = favoriteQuotes.find((favorite) => favorite.id === selectedQuote.id)
-      // TEST 
-      // const alreadyFavorite = favoriteQuotes.find((favorite) => favorite.id === quotes.id)
       console.log(alreadyFavorite)
+      
       if (alreadyFavorite) {
-        console.log("already in favorites!!")
+        setMessageText("already in favorites!!")
+        setShowMessage(true);
       } else if (favoriteQuotes.length < maxFavs) {
         setFavoriteQuotes([...favoriteQuotes, selectedQuote])
-        console.log("added to favorites")
+        setMessageText("added to favorites")
+        setShowMessage(true);
       } else {
-        console.log("max number of quotes reached, please delete one to add another")
+        setMessageText("max number of quotes reached, please delete one to add another") 
+        setShowMessage(true);
       }
     };
 
@@ -83,6 +88,10 @@ const categories = ["All", "Leadership", "Empathy", "Motivation", "Learning", "S
      setFavoriteQuotes(updatedFavorites)
       }
    
+     const removeMessage = () => {
+        setShowMessage(false);
+      }
+
        
 
    
@@ -90,6 +99,11 @@ const categories = ["All", "Leadership", "Empathy", "Motivation", "Learning", "S
 
   return (
     <div className='App'>
+      {showMessage &&
+      <Message 
+      removeMessage={removeMessage}
+      messageText={messageText}
+      /> }
       <Header />
       <main>
         <FavoriteQuotes 
