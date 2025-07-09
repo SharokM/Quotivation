@@ -284,9 +284,9 @@ footer {
   width: 100%;
   max-width: 100%;
   padding: 2rem;
-  border: 1px solid #ccc;
+  border: 1px ridge #ccc;
   border-radius: 26px;
-  background-color: #88bbc1;
+  background-color: #61b0b9;
   font-size: 1.75rem;
 }
 
@@ -352,7 +352,7 @@ footer {
   max-width: 60px;
   margin: 0;
   padding: 0;
-  color: #333;
+  color: #c622ae;
 }
 
 .quote-card .add-favorite:hover svg {

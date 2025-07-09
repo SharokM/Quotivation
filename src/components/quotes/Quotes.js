@@ -10,13 +10,15 @@ const Quotes = ({filteredQuotes, category, categories, handleCategoryChange, add
             <div className="category-header">
                 <h2>Pick Your Favorite Quotes Below</h2>
                 <p>
-                    Browse Through Your Collection Of Quotes
+                    You have {filteredQuotes.length} {category !== "All" && category} {filteredQuotes.length === 1 ? "quote" : "quotes"}!!
                 </p>
+
+
                 <CategoryForm categories={categories} category={category} handleCategoryChange={handleCategoryChange}/>
             </div>
 
             {filteredQuotes.map((quote) => (
-             <QuoteCard key={quote.id} quote={quote} addToFavorites={addToFavorites} favoriteQuotes={favoriteQuotes}/>
+             <QuoteCard key={quote.id} quote={quote} addToFavorites={addToFavorites} favoriteQuotes={favoriteQuotes} />
             ))}
             </div>
         </section>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Component } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Quotes from "./components/quotes/Quotes";
@@ -13,7 +13,7 @@ function App() {
 const [quotes, setQuotes] = useState([]);
 const [loading, setLoading] = useState(false);
 const [category, setCategory] = useState("All");
-const [favoriteQuotes, setFavoriteQuotes] = useState([]);
+const [favoriteQuotes, setFavoriteQuotes] = useState(JSON.parse(window.localStorage.getItem("favoriteQuotes")) || []);
 const [messageText, setMessageText] = useState("");
 const [showMessage, setShowMessage] = useState(false);
 const maxFavs = 3;
@@ -55,11 +55,19 @@ const categories = ["All", "Leadership", "Empathy", "Motivation", "Learning", "S
     },[])
 
 
-    const handleCategoryChange = (e) => {
+    // SAVE TO LOCAL STORAGE
+    useEffect(() => {
+      window.localStorage.setItem("favoriteQuotes", JSON.stringify(favoriteQuotes));
+    }, [favoriteQuotes]);
+      // JSON.parse(localStorage.getItem("favoriteQuotes"))
+
+
+     const filteredQuotes = category !== "All" ? quotes.filter((quote) => quote.categories.includes(category)) : quotes;
+
+
+     const handleCategoryChange = (e) => {
       setCategory(e.target.value)
     }
-
-    const filteredQuotes = category !== "All" ? quotes.filter((quote) => quote.categories.includes(category)) : quotes;
 
 
     const addToFavorites = (quoteId) => {
