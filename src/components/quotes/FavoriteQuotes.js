@@ -12,10 +12,22 @@ const FavoriteQuotes= ({favoriteQuotes, maxFavs, removeFromFavorites}) => {
           {favoriteQuotes.length > 0 && 
           <ul>
             {favoriteQuotes.map((quote) => (
-                <FavoriteQuoteCard quote={quote} key={quote.id} maxFavs={maxFavs} removeFromFavorites={removeFromFavorites}
+                <FavoriteQuoteCard quote={quote} key={quote.id} removeFromFavorites={removeFromFavorites}
             />
             ))}
           </ul>}
+          {favoriteQuotes.length < maxFavs && (
+                      <div className="favorite-quotes-description">
+                      <p>
+                      Add up to {maxFavs-favoriteQuotes.length} more {maxFavs - favoriteQuotes.length === 1 ? "quote" : "quotes"} by selecting from the options below!
+                      </p>
+            
+                      <p>
+                          Once chosen, your quotes will appear here.  
+                      </p>
+                </div>
+          )}
+          
         </div>
       </section>
     )
