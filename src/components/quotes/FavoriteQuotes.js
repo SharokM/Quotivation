@@ -11,8 +11,8 @@ const FavoriteQuotes= ({favoriteQuotes, maxFavs, removeFromFavorites}) => {
           <h3>Top 3 Favorite Quotes </h3>
           {favoriteQuotes.length > 0 && 
           <ul>
-            {favoriteQuotes.map((quote) => (
-                <FavoriteQuoteCard quote={quote} key={quote.id} removeFromFavorites={removeFromFavorites}
+            {favoriteQuotes.map((quote, index) => (
+                <FavoriteQuoteCard quote={quote} listPosition={index + 1} key={quote.id} removeFromFavorites={removeFromFavorites}
             />
             ))}
           </ul>}
