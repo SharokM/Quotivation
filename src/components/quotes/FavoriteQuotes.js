@@ -1,6 +1,6 @@
 import React from "react";
 import FavoriteQuoteCard from "./FavoriteQuoteCard";
-import Quotes from "./Quotes";
+// import Quotes from "./Quotes";
 
 const FavoriteQuotes= ({favoriteQuotes, maxFavs, removeFromFavorites}) => {
 

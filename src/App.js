@@ -1,4 +1,4 @@
-import { useState, useEffect, Component } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Quotes from "./components/quotes/Quotes";
@@ -46,12 +46,7 @@ const categories = ["All", "Leadership", "Empathy", "Motivation", "Learning", "S
 
     useEffect (() => {
       fetchQuotes();
-      // const timeInterval = window.setInterval(() => {
-      //   setTime(new Date());
-      //   console.log("in timeInterval");
-      //   // console.log("intvl");
-      // }, 1000);
-      // return () => window.clearInterval(timeInterval);
+
     },[])
 
 
