@@ -60,11 +60,8 @@ const categories = ["All", "Leadership", "Empathy", "Motivation", "Learning", "S
 
 
     const addToFavorites = (quoteId) => {
-      // console.log(`favorite quote heart here ${quoteId}`)
       const selectedQuote = quotes.find((quote) => quote.id === quoteId);
-      // console.log(selectedQuote)
       const alreadyFavorite = favoriteQuotes.find((favorite) => favorite.id === selectedQuote.id)
-      // console.log(alreadyFavorite)
       
       if (alreadyFavorite) {
         setMessageText("already in favorites!!")
