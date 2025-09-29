@@ -30,7 +30,6 @@ const categories = ["All", "Leadership", "Empathy", "Motivation", "Learning", "S
 
     const fetchQuotes = async() => {
 
-      // console.log(fetchQuotes);
       try {
         setLoading(true);
         const response = await fetch(quotesUrl);
@@ -49,8 +48,6 @@ const categories = ["All", "Leadership", "Empathy", "Motivation", "Learning", "S
 
     },[])
 
-
-    // SAVE TO LOCAL STORAGE
     useEffect(() => {
       window.localStorage.setItem("favoriteQuotes", JSON.stringify(favoriteQuotes));
     }, [favoriteQuotes]);
@@ -114,12 +111,7 @@ const categories = ["All", "Leadership", "Empathy", "Motivation", "Learning", "S
         maxFavs={maxFavs}
         removeFromFavorites={removeFromFavorites}
         />
-        {/* <section className="favorite-quotes">
-          <div className="wrapper quotes">
-            <h3>Top 3 Favorite Quotes</h3>
-            {favoriteQuotes.length >= 1 && JSON.stringify(favoriteQuotes)}
-          </div>
-        </section> */}
+
         {loading ? (
          <Loader/> 
         ) : ( 

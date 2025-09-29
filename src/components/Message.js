@@ -24,9 +24,3 @@ export default Message;
 
 
 
-      // const timeInterval = window.setInterval(() => {
-      //   setTime(new Date());
-      //   console.log("in timeInterval");
-      //   // console.log("intvl");
-      // }, 1000);
-      // return () => window.clearInterval(timeInterval);
