@@ -6,7 +6,6 @@ import { Loader } from "react-feather";
 import "./App.css";
 import FavoriteQuotes from "./components/quotes/FavoriteQuotes";
 import Message from "./components/Message";
-// import { use } from "react";
 
 
 function App() {
@@ -33,11 +32,10 @@ const categories = ["All", "Leadership", "Empathy", "Motivation", "Learning", "S
       try {
         setLoading(true);
         const response = await fetch(quotesUrl);
-        // console.log(response);
         const results = await response.json();
         setQuotes(results);
       } catch (e) {
-        console.log("error found", e);
+        // console.log("error found", e);
       }
       setLoading(false);
     };
@@ -51,7 +49,6 @@ const categories = ["All", "Leadership", "Empathy", "Motivation", "Learning", "S
     useEffect(() => {
       window.localStorage.setItem("favoriteQuotes", JSON.stringify(favoriteQuotes));
     }, [favoriteQuotes]);
-      // JSON.parse(localStorage.getItem("favoriteQuotes"))
 
 
      const filteredQuotes = category !== "All" ? quotes.filter((quote) => quote.categories.includes(category)) : quotes;
@@ -67,7 +64,7 @@ const categories = ["All", "Leadership", "Empathy", "Motivation", "Learning", "S
       const selectedQuote = quotes.find((quote) => quote.id === quoteId);
       // console.log(selectedQuote)
       const alreadyFavorite = favoriteQuotes.find((favorite) => favorite.id === selectedQuote.id)
-      console.log(alreadyFavorite)
+      // console.log(alreadyFavorite)
       
       if (alreadyFavorite) {
         setMessageText("already in favorites!!")
